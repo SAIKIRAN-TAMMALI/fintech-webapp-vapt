@@ -128,7 +128,7 @@ Connected to FTP with no password, listed and downloaded files, and read `flag1.
 `flag 1 → bd923112d59c477a94c9998379152258`
 
 ![Anonymous FTP login and flag1.txt retrieved](screenshots/flag-1_i_.png)
-![cat flag1.txt revealing the flag](screenshots/Flag1.png)
+![Anonymous FTP login and flag1.txt retrieved cat flag1.txt revealing the flag](screenshots/Anonymous FTP login and flag1.txt retrieved cat flag1.txt revealing the flag.png)
 
 **Fix:** disable anonymous FTP, switch to SFTP/FTPS, remove sensitive files from served folders, rotate the exposed key.
 
@@ -140,7 +140,7 @@ Gobuster surfaced `robots.txt`; opening it revealed a flag next to `Disallow: /`
 
 `flag 2 → 930f04eb6ff0eb864b2157dd2aa048c6`
 
-![robots.txt exposing flag 2](screenshots/Flag2.png)
+![robots.txt exposing flag 2](screenshots/robots.txt exposing flag 2.png)
 
 **Fix:** never store secrets in `robots.txt`; protect sensitive paths with real auth.
 
