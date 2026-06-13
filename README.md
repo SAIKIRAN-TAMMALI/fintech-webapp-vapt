@@ -86,7 +86,7 @@ dirsearch -u http://10.0.2.8 -e php,html,js,txt,zip -t 50     # second pass for 
 
 Gobuster mapped the application's directories and files — surfacing `robots.txt`, `pages/`, `images/`, `css/`, and `js/`, which guided the rest of the assessment:
 
-![Gobuster directory enumeration output](gobuster_op_.png)
+![Gobuster directory enumeration output](gobuster(op).png)
 
 **Exploitation / flag capture**
 ```bash
@@ -127,8 +127,8 @@ Connected to FTP with no password, listed and downloaded files, and read `flag1.
 
 `flag 1 → bd923112d59c477a94c9998379152258`
 
-![Anonymous FTP login and flag1.txt retrieved](flag1.png)
-![Anonymous FTP login and flag1.txt retrieved cat flag1.txt revealing the flag](screenshots/Anonymous FTP login and flag1.txt retrieved cat flag1.txt revealing the flag.png)
+![Anonymous FTP login and flag1.txt retrieved](flag-1(0).png)
+![Anonymous FTP login and flag1.txt retrieved cat flag1.txt revealing the flag](Anonymous%20FTP%20login%20and%20flag1.txt%20retrieved%20cat%20flag1.txt%20revealing%20the%20flag.png)
 
 **Fix:** disable anonymous FTP, switch to SFTP/FTPS, remove sensitive files from served folders, rotate the exposed key.
 
@@ -140,7 +140,7 @@ Gobuster surfaced `robots.txt`; opening it revealed a flag next to `Disallow: /`
 
 `flag 2 → 930f04eb6ff0eb864b2157dd2aa048c6`
 
-![robots.txt exposing flag 2](flag2.png)
+![robots.txt exposing flag 2](robots.txt%20exposing%20flag%202.png)
 
 **Fix:** never store secrets in `robots.txt`; protect sensitive paths with real auth.
 
@@ -152,7 +152,7 @@ Gobuster surfaced `robots.txt`; opening it revealed a flag next to `Disallow: /`
 
 `flag 3 → b35e7489cf89d4188c85d921a2f79821`
 
-![Flag 3 hidden in an HTML comment in the blog page source](Flag3.png)
+![Flag 3 hidden in an HTML comment in the blog page source](Flag%203%20hidden%20in%20an%20HTML%20comment%20in%20the%20blog%20pag....png)
 
 **Fix:** strip comments at build time; scan for secrets before release.
 
@@ -164,7 +164,7 @@ Found `/4dm1n/`, viewed source, and recovered another flag from a comment. The o
 
 `flag 4 → 337651bfdec655e803343648eae68ac3`
 
-![Exposed admin login page at /4dm1n/](adminpage.png)
+![Exposed admin login page at /4dm1n/](Exposed%20admin%20login%20page%20at%204dm1n%20Flag%204%20in%20the%20a....png)
 ![Flag 4 in the admin page source comment](Flag4.png)
 
 **Fix:** remove the comment; restrict the admin panel by IP/VPN/network segmentation; add rate limiting, lockout, and MFA.
@@ -177,7 +177,7 @@ Found `/4dm1n/`, viewed source, and recovered another flag from a comment. The o
 
 `flag 5 → 88615e277ae89ad96a4a365a9a854740`
 
-![phpinfo() page at /c0nf1g/ exposing server configuration and flag 5](Flag5.png)
+![phpinfo() page at /c0nf1g/ exposing server configuration and flag 5](phpinfo()%20page%20at%20c0nf1g%20exposing%20server%20configura....png)
 
 **Fix:** remove debug pages from production, set `expose_php = Off`, upgrade PHP.
 
@@ -189,7 +189,7 @@ Burp Suite Repeater showed a `POST` over plain `HTTP/1.1` (no TLS) with the flag
 
 `flag 6 → 0b318db8f0d5b38c6d38ede5e2af71c3`
 
-![Burp Suite Repeater showing flag 6 over cleartext HTTP](Flag6.png)
+![Burp Suite Repeater showing flag 6 over cleartext HTTP](Burp%20Suite%20Repeater%20showing%20flag%206%20over%20cleartext%20H....png)
 
 **Fix:** enforce HTTPS/TLS everywhere, enable HSTS, keep sensitive values out of responses/logs.
 
